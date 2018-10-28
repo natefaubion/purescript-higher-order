@@ -2,7 +2,7 @@ module Higher.Lower where
 
 import Prelude
 
-import Higher.Functor (class HFunctor)
+import Higher.Data.Functor (class HFunctor)
 
 newtype Lower f (rec :: Type -> Type) a = Lower (f a)
 
