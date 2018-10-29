@@ -11,10 +11,10 @@ import Higher.Data.Traversable (class HTraversable, htraverse)
 import Higher.Fold (hcata)
 
 hhylo :: forall f a b. HFunctor f => HAlgebra f b -> HCoalgebra f a -> a ~> b
-hhylo f g = f <<< hmap (hhylo f g) <<< g
+hhylo phi psi = phi <<< hmap (hhylo phi psi) <<< psi
 
 hhyloM :: forall t m h f a. HTraversable t => Monad m => HAlgebraM m t h -> HCoalgebraM m t f -> f a -> m (h a)
-hhyloM f g = f <=< htraverse (hhyloM f g) <=< g
+hhyloM phiM psiM = phiM <=< htraverse (hhyloM phiM psiM) <=< psiM
 
 hconvertTo ∷ forall t f r. HRecursive t f => HCorecursive r f => t ~> r
 hconvertTo = hcata hembed
