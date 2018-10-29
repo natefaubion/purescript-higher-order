@@ -2,10 +2,11 @@ module Higher.Unfold where
 
 import Prelude
 
+import Data.Functor.Coproduct (Coproduct, coproduct)
 import Higher.Algebra (HAlgebra)
 import Higher.Class.Corecursive (class HCorecursive, hembed)
 import Higher.Class.Recursive (class HRecursive, hproject)
-import Higher.Coalgebra (HCoalgebra, HCoalgebraM)
+import Higher.Coalgebra (HCoalgebra, HCoalgebraM, HGCoalgebra)
 import Higher.Data.Functor (class HFunctor, hmap)
 import Higher.Data.Traversable (class HTraversable, htraverse)
 import Higher.NaturalTransformation (NatM)
@@ -18,3 +19,6 @@ hanaM f = map hembed <<< htraverse (hanaM f) <=< f
 
 hcolambek ∷ forall t f. HRecursive t f => HCorecursive t f => HAlgebra f t
 hcolambek = hana (hmap hproject)
+
+hapo :: forall t h a. HCorecursive t h => HGCoalgebra (Coproduct t) h a -> a ~> t
+hapo psi = hembed <<< hmap (coproduct identity (hapo psi)) <<< psi

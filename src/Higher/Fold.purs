@@ -2,7 +2,8 @@ module Higher.Fold where
 
 import Prelude
 
-import Higher.Algebra (HAlgebra, HAlgebraM)
+import Data.Functor.Product (Product, product)
+import Higher.Algebra (HAlgebra, HAlgebraM, HGAlgebra)
 import Higher.Class.Corecursive (class HCorecursive, hembed)
 import Higher.Class.Recursive (class HRecursive, hproject)
 import Higher.Coalgebra (HCoalgebra)
@@ -18,3 +19,6 @@ hcataM f = f <=< htraverse (hcataM f) <<< hproject
 
 hlambek ∷ forall t f. HRecursive t f => HCorecursive t f => HCoalgebra f t
 hlambek = hcata (hmap hembed)
+
+hpara :: forall h t a. HFunctor h => HRecursive t h => HGAlgebra (Product t) h a -> t ~> a
+hpara f = f <<< hmap (\a -> product a (hpara f a)) <<< hproject
