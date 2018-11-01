@@ -4,6 +4,10 @@ import Prelude
 
 import Higher.NaturalTransformation (NatM)
 
-type HCoalgebra h f = f ~> h f
+type HCoalgebra (h :: (Type -> Type) -> Type -> Type) (f :: Type -> Type) = f ~> h f
 
-type HCoalgebraM m h f = NatM m f (h f)
+type HCoalgebraM (m :: Type -> Type) (h :: (Type -> Type) -> Type -> Type) (f :: Type -> Type) = NatM m f (h f)
+
+type HGCoalgebra (m :: (Type -> Type) -> Type -> Type) (h :: (Type -> Type) -> Type -> Type) (a :: Type -> Type) = a ~> h (m a)
+
+type HGCoalgebraM (n :: (Type -> Type) -> Type -> Type) (m :: Type -> Type) (h :: (Type -> Type) -> Type -> Type) (a :: Type -> Type) = NatM m a (h (n a))
