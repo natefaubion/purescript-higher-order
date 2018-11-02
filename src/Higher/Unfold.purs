@@ -4,11 +4,11 @@ import Prelude
 
 import Data.Functor.Coproduct (Coproduct, coproduct)
 import Higher.Algebra (HAlgebra)
-import Higher.Class.Corecursive (class HCorecursive, hembed)
-import Higher.Class.Recursive (class HRecursive, hproject)
+import Higher.Corecursive (class HCorecursive, hembed)
+import Higher.Recursive (class HRecursive, hproject)
 import Higher.Coalgebra (HCoalgebra, HCoalgebraM, HGCoalgebra, HGCoalgebraM)
-import Higher.Data.Functor (class HFunctor, hmap)
-import Higher.Data.Traversable (class HTraversable, htraverse)
+import Higher.Functor (class HFunctor, hmap)
+import Higher.Traversable (class HTraversable, htraverse)
 import Higher.NaturalTransformation (NatM)
 
 hana :: forall h f t. HFunctor h => HCorecursive t h => HCoalgebra h f -> f ~> t

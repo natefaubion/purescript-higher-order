@@ -1,11 +1,11 @@
-module Higher.Data.Foldable where
+module Higher.Foldable where
 
 import Prelude
 
 import Data.Monoid.Dual (Dual(..))
 import Data.Monoid.Endo (Endo(..))
 import Data.Newtype (unwrap)
-import Higher.Data.Functor (class HFunctor)
+import Higher.Functor (class HFunctor)
 import Higher.NaturalTransformation (type (~>.))
 
 class HFunctor h <= HFoldable (h :: (Type -> Type) -> (Type -> Type)) where

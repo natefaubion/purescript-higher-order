@@ -3,11 +3,11 @@ module Higher.Refold where
 import Prelude
 
 import Higher.Algebra (HAlgebra, HAlgebraM)
-import Higher.Class.Corecursive (class HCorecursive, hembed)
-import Higher.Class.Recursive (class HRecursive)
+import Higher.Corecursive (class HCorecursive, hembed)
+import Higher.Recursive (class HRecursive)
 import Higher.Coalgebra (HCoalgebra, HCoalgebraM)
-import Higher.Data.Functor (class HFunctor, hmap)
-import Higher.Data.Traversable (class HTraversable, htraverse)
+import Higher.Functor (class HFunctor, hmap)
+import Higher.Traversable (class HTraversable, htraverse)
 import Higher.Fold (hcata)
 
 hhylo :: forall f a b. HFunctor f => HAlgebra f b -> HCoalgebra f a -> a ~> b

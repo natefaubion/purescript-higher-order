@@ -5,11 +5,11 @@ import Prelude
 import Control.Apply (lift2)
 import Data.Functor.Product (Product, product)
 import Higher.Algebra (HAlgebra, HAlgebraM, HGAlgebra, HGAlgebraM)
-import Higher.Class.Corecursive (class HCorecursive, hembed)
-import Higher.Class.Recursive (class HRecursive, hproject)
+import Higher.Corecursive (class HCorecursive, hembed)
+import Higher.Recursive (class HRecursive, hproject)
 import Higher.Coalgebra (HCoalgebra)
-import Higher.Data.Functor (class HFunctor, hmap)
-import Higher.Data.Traversable (class HTraversable, htraverse)
+import Higher.Functor (class HFunctor, hmap)
+import Higher.Traversable (class HTraversable, htraverse)
 import Higher.NaturalTransformation (NatM)
 
 hcata :: forall h f t. HFunctor h => HRecursive t h => HAlgebra h f -> t ~> f

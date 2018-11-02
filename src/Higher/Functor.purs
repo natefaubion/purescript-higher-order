@@ -1,4 +1,4 @@
-module Higher.Data.Functor where
+module Higher.Functor where
 
 import Prelude
 
