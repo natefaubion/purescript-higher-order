@@ -2,9 +2,9 @@ module Higher.Hoist where
 
 import Prelude
 
-import Higher.Class.Corecursive (class HCorecursive, hembed)
-import Higher.Class.Recursive (class HRecursive)
-import Higher.Data.Functor (class HFunctor)
+import Higher.Corecursive (class HCorecursive, hembed)
+import Higher.Recursive (class HRecursive)
+import Higher.Functor (class HFunctor)
 import Higher.Fold (hcata)
 import Higher.Functor.Mu (HMu)
 

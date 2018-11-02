@@ -1,8 +1,8 @@
-module Higher.Class.Corecursive where
+module Higher.Corecursive where
 
 import Data.Newtype (wrap)
 import Higher.Algebra (HAlgebra)
-import Higher.Data.Functor (class HFunctor)
+import Higher.Functor (class HFunctor)
 import Higher.Functor.Mu (HMu)
 
 class HFunctor f <= HCorecursive t f | t -> f where
